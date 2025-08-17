@@ -10,7 +10,7 @@ function Register() {
   const [formData, setFormData] = useState({ name: "", email: "" });
 
   useEffect(() => {
-    axios.post(`${import.meta.env.VITE_API_URL}/api/register`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/events`)
       .then((res) => setEvent(res.data))
       .catch((err) => console.error("Event fetch error:", err));
   }, [id]);
@@ -24,7 +24,7 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:5000/api/register`, {
+    axios.post(`${import.meta.env.VITE_API_URL}/api/register`, {
       eventId: id,
       ...formData
     })
